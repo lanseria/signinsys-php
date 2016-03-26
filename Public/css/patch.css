@@ -1,0 +1,48 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+}
+
+.bs-docs-section > p, .bs-docs-section > ul, 
+.bs-docs-section > ol, .bs-callout > p, 
+.bs-callout > ol, .bs-callout > ul {
+	font-size: 16px;
+	line-height: 1.75;
+	margin-bottom: 1em;
+}
+
+.bs-callout *:last-child {
+	margin-bottom: 0;
+}
+.bs-docs-header, .bs-docs-masthead{
+	position: relative;
+    padding: 30px 0;
+    color: #A5E4F3;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0,0,0,.1);
+    background-color: #4CCAE8;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#6DBAEA),to(#6DB3EC));
+    background-image: -webkit-linear-gradient(top,#6DBAEA 0,#6DB3EC 100%);
+    background-image: -o-linear-gradient(top,#6DBAEA 0,#6DB3EC 100%);
+    background-image: linear-gradient(to bottom,#6DBAEA 0,#6DB3EC 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6DBAEA', endColorstr='#6DB3EC', GradientType=0);
+    background-repeat: repeat-x;
+}
+.bs-docs-masthead .version {
+    color: #FFFFFF;
+}
+.btn-outline-inverse {
+    border-color: #E3BFBF;
+}
+.bs-docs-booticon-outline {
+    border: 1px solid #E3BFBF;
+}
+.bs-docs-nav .navbar-brand, .bs-docs-nav .navbar-nav>li>a {
+    font-weight: 500;
+    color: #717171;
+}
+.bs-docs-nav .navbar-toggle .icon-bar {
+    background-color: #BE79A1;
+}
+.nav>li {
+    background-color: #FFFFFF;
+}

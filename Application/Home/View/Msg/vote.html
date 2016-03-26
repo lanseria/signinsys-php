@@ -1,0 +1,91 @@
+<div class="bs-docs-featurette">
+	<div class="container">
+		<h2 class="bs-docs-featurette-title">{$msg.pname}</h2>
+		<p class="lead">{$msg.pdes}</p>
+		<div class="col-md-6 col-md-offset-3">
+			<form class="form-horizontal" action="{:U('/Home/Msg/vote')}" method="post">
+				<input type="hidden" name="pid" value="{$msgid}" />
+				<div class="form-group" method="post" >
+					<label class="col-sm-3 control-label">姓名</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="iName" placeholder="Name" name="name">
+					</div>
+				</div>
+				<if condition="$msg.isgender eq 1 ">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">性别</label>
+						<div class="col-sm-9">
+							<select class="form-control" name="gender">
+								<option value="1">男</option>
+								<option value="0">女</option>
+							</select>
+						</div>
+					</div>
+					<else />
+				</if>
+				<if condition="$msg.isage eq 1 ">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">年龄</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="iAge" placeholder="Age" name="age">
+						</div>
+					</div>
+					<else />
+				</if>
+				<if condition="$msg.iscollege eq 1 ">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">学院</label>
+						<div class="col-sm-9">
+							<select class="form-control" name="province" id="province" onchange="loadArea(this.value,'city')">
+								<option value="-1" selected>学院/新区/老区</option>
+								<volist name="province" id="one">
+									<option value="{$one.area_id}">{$one.colloge_name}</option>
+								</volist>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">专业</label>
+						<div class="col-sm-9">
+							<select class="form-control" name="city" id="city">
+								<option value="-1">请选择专业/班级</option>
+							</select>
+						</div>
+					</div>
+					<else />
+				</if>
+				<if condition="$msg.isnumber eq 1 ">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">学号</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="iNumber" placeholder="Number" name="number">
+						</div>
+					</div>
+					<else />
+				</if>
+				<if condition="$msg.istel eq 1 ">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">手机号</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="iTel" placeholder="Tel" name="tel">
+						</div>
+					</div>
+					<else />
+				</if>
+				<if condition="$msg.isdetail eq 1 ">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">个人说明</label>
+						<div class="col-sm-9">
+							<textarea class="form-control" rows="3" name="detail"></textarea>
+						</div>
+					</div>
+					<else />
+				</if>
+				<div class="form-group">
+					<button type="submit" class="btn btn-success btn-lg btn-block">报名</button>
+				</div>
+			</form>
+		</div>
+		<hr class="half-rule">
+	</div>
+</div>

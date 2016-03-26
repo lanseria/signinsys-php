@@ -1,0 +1,71 @@
+<main class="bs-docs-masthead" id="content" role="main" tabindex="-1">
+	<div class="container">
+		<img class="bs-docs-booticon bs-docs-booticon-lg" style="background-color: rgba(255,255,255,0);" src="__PUBLIC__/icon-144.png" alt="logo" />
+		<p class="lead">由LimonPlayer Studio开发的报名管理系统是以最受欢迎的Bootstrap框架为基础，用于大学、企业中、小型活动报名统计的 WEB 项目。</p>
+		<p class="lead">
+			<a href="#" class="btn btn-outline-inverse btn-lg">下载 LDemo</a>
+		</p>
+		<p class="version">当前版本： v1.0.0 | 文档更新于：2016-03-18</p>
+	</div>
+</main>
+<foreach name="msglist" item="msg" >
+	<div class="bs-docs-featurette">
+		<div class="container">
+			<h2 class="bs-docs-featurette-title">{$msg.pname}</h2>
+			<p class="lead">{$msg.pdes}</p>
+			<hr class="half-rule">
+			<div class="row">
+				<div class="col-sm-4">
+					<img src="__PUBLIC__/pic/project1/{$msg.pimg1}" alt="Sass and Less support" class="img-responsive">
+					<h3>{$msg.ptitle1}</h3>
+					<p>{$msg.pdescribe1}</p>
+				</div>
+				<div class="col-sm-4">
+					<img src="__PUBLIC__/pic/project1/{$msg.pimg2}" alt="Responsive across devices" class="img-responsive">
+					<h3>{$msg.ptitle2}</h3>
+					<p>{$msg.pdescribe2}</p>
+				</div>
+				<div class="col-sm-4">
+					<img src="__PUBLIC__/pic/project1/{$msg.pimg3}" alt="Components" class="img-responsive">
+					<h3>{$msg.ptitle3}</h3>
+					<p>{$msg.pdescribe3}</p>
+				</div>
+			</div>
+			<hr class="half-rule">
+			<p class="lead">如果你有意愿，参与我们，报名参加吧！</p>
+			<a href="{:U('Home/Msg/join')}?pid={$msg.pid}" class="btn btn-outline btn-lg">我要报名</a>
+		</div>
+	</div>
+</foreach>
+<div class="bs-docs-featurette">
+	<div class="container">
+		<h2 class="bs-docs-featurette-title">基于 LDemo 构建的网站</h2>
+		<p class="lead">全球数以百万计的网站都是基于 LDemo 构建的。你可以先参观一下我们提供的实例精选或者看一看我们粉丝的网站吧。</p>
+		<hr class="half-rule">
+		<div class="row bs-docs-featured-sites">
+			<div class="col-xs-6 col-sm-3">
+				<a href="http://www.golaravel.com/" target="_blank" title="Laravel中文网">
+					<img src="__PUBLIC__/img/blog.png" alt="Laravel中文网" class="img-responsive">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<a href="http://www.ghostchina.com/" target="_blank" title="Ghost中国">
+					<img src="__PUBLIC__/img/broswer.png" alt="Ghost中国" class="img-responsive">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<a href="http://www.gulpjs.com.cn/" target="_blank" title="Gulp中文网">
+					<img src="__PUBLIC__/img/love.png" alt="Gulp中文网" class="img-responsive">
+				</a>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<a href="http://www.gruntjs.net/" target="_blank" title="Gurnt中文网">
+					<img src="__PUBLIC__/img/oj.png" alt="Gurnt中文网" class="img-responsive">
+				</a>
+			</div>
+		</div>
+		<hr class="half-rule">
+		<p class="lead">我们在“优站精选”里展示了许多精美的 Bootstrap 网站。</p>
+		<a href="http://limonplayer.cn" class="btn btn-outline btn-lg">逛一逛“优站精选”</a>
+	</div>
+</div>
