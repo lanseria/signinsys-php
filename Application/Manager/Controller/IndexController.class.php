@@ -82,7 +82,7 @@ class IndexController extends Controller {
                 $data = $project->insertP($post['pname'],$pimg,$pdes,$ptitle1,$pdescribe1,$ptitle2,$pdescribe2,$ptitle3,$pdescribe3,$isgender,$isage,$iscollege,$isnumber,$isdetail,$istel);
                 if($data)
                 {
-                    $this->error('申请成功');
+                    $this->success('申请成功');
                 }
                 else{
                     $this->error('申请失败，请检查');
@@ -139,12 +139,32 @@ class IndexController extends Controller {
         $data = D('vmember')->where(array(
                 'mprojectid' => $pid
             ))->select();
-        $objSheet->setCellValue("A1","ID")->setCellValue("B1","姓名")->setCellValue("C1","性别")->setCellValue("D1","年龄")->setCellValue("E1","学院")->setCellValue("F1","班级")->setCellValue("G1","学号")->setCellValue("H1","报名时间")->setCellValue("I1","自我评价");
-        $j=2;
+        $objSheet->mergeCells('A1:J1');
+        $objSheet->mergeCells('A2:J2');
+        //设置表头行高
+        $objSheet->getRowDimension(1)->setRowHeight(35);
+        $objSheet->getRowDimension(2)->setRowHeight(22);
+        //设置字体样式
+        $objSheet->getStyle('A1')->getFont()->setName('黑体');
+        $objSheet->getStyle('A1')->getFont()->setSize(20);
+        $objSheet->getStyle('A1')->getFont()->setBold(true);
+        
+        $objSheet->getColumnDimension('E')->setWidth(13);
+        $objSheet->getColumnDimension('F')->setWidth(24);
+        $objSheet->getColumnDimension('G')->setWidth(41);
+        $objSheet->getColumnDimension('H')->setWidth(18);
+        $objSheet->getColumnDimension('I')->setWidth(19);
+        $objSheet->setCellValue('A1', $msg[0]['pname']);
+        $objSheet->setCellValue('A2', '(导出日期：'.date('Y-m-d',time()).')');
+        $objSheet->setCellValue("A3","ID")->setCellValue("B3","姓名")->setCellValue("C3","性别")->setCellValue("D3","年龄")->setCellValue("E3","电话")->setCellValue("F3","学院")->setCellValue("G3","班级")->setCellValue("H3","学号")->setCellValue("I3","报名时间")->setCellValue("J3","自我评价");
+        $j=4;
         foreach ($data as $key => $value) {
-            $objSheet->setCellValue("A".$j,$value['mid'])->setCellValue("B".$j,$value['mname'])->setCellValue("C".$j,$value['msex'])->setCellValue("D".$j,$value['mage'])->setCellValue("E".$j,$value['colloge_name'])->setCellValue("F".$j,$value['class_name'])->setCellValue("G".$j,$value['mnumber'])->setCellValue("H".$j,$value['mcreate_date'])->setCellValue("I".$j,$value['mdetail']);
+            $objSheet->setCellValue("A".$j,$value['mid'])->setCellValue("B".$j,$value['mname'])->setCellValue("C".$j,$value['msex'])->setCellValue("D".$j,$value['mage'])->setCellValue("E".$j,$value['mtel'])->setCellValue("F".$j,$value['colloge_name'])->setCellValue("G".$j,$value['class_name'])->setCellValue("H".$j," ".$value['mnumber'])->setCellValue("I".$j,$value['mcreate_date'])->setCellValue("J".$j,$value['mdetail']);
             $j++;
         }
+        $objSheet->getStyle('A1:J'.($j))->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $objSheet->getStyle('A1:J'.($j))->getAlignment()->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
+        $objSheet->setAutoFilter('A3:J'.($j));
         //$objWriter->save($dir."/test.xlsx");
         
         ob_end_clean();//重要！！！！！！！！！解决乱码
@@ -164,8 +184,11 @@ class IndexController extends Controller {
         
         $objWriter->save("php://output");
     }
-    function browser_export($type, $filename){
-        
+    public function del(){
+        $mid = I('get.mid');
+        $User = D("member"); // 实例化User对象
+        $User->delete($mid); // 删除主键为1,2和5的用户数据
+        $this->success("删除了");
     }
     
 }
