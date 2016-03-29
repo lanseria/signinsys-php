@@ -37,7 +37,7 @@
 						<label class="col-sm-3 control-label">学院</label>
 						<div class="col-sm-9">
 							<select class="form-control" name="province" id="province" onchange="loadArea(this.value,'city')">
-								<option value="-1" selected>学院/新区/老区</option>
+								<option value="-1" selected>请选择学院/包括(新区/老区)</option>
 								<volist name="province" id="one">
 									<option value="{$one.area_id}">{$one.colloge_name}</option>
 								</volist>
@@ -82,7 +82,7 @@
 					<else />
 				</if>
 				<div class="form-group">
-					<button type="submit" class="btn btn-success btn-lg btn-block">报名</button>
+					<button type="submit" class="btn btn-success btn-lg">&nbsp;&nbsp;&nbsp;&nbsp;报名&nbsp;&nbsp;&nbsp;&nbsp;</button>
 				</div>
 			</form>
 		</div>
