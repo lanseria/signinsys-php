@@ -2,6 +2,7 @@
 return array(
 	//'配置项'=>'配置值'
     /* 数据库设置 */
+    //'URL_HTML_SUFFIX'       =>  'shtml',
     'DB_TYPE'               =>  'mysql',     // 数据库类型
     'DB_HOST'               =>  '127.0.0.1', // 服务器地址
     'DB_NAME'               =>  'mm',          // 数据库名
