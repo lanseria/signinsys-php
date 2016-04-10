@@ -34,6 +34,7 @@ class ProjectModel extends Model
         $data['isnumber']=$isnumber;
         $data['isdetail']=$isdetail;
         $data['istel']=$istel;
+        $data['pcreatetime']=date('Y-m-d H:i:s');
         
         return $this->data($data)->add();
     }

@@ -10,9 +10,9 @@ class MemberModel extends Model{
     protected $trueTableName = 'm_member';
     protected $_validate = array(
      array('mname','require','姓名必须！'), //默认情况下用正则进行验证
-     array('mage','require','年龄必须！'), //默认情况下用正则进行验证
+     array('mage','number','年龄必须是数字！'), //默认情况下用正则进行验证
      array('mtel','require','电话必须！'), //默认情况下用正则进行验证
-     array('mnumber','number','必须是数字！'), //默认情况下用正则进行验证
+     array('mnumber','number','必须是数字！'),
      array('mcollogeid',-1,'请填写学院！',2,'notequal'),
      array('mclassid',-1,'请填写专业！',2,'notequal'),
      array('mdetail','require','个人信息必须！'), //默认情况下用正则进行验证

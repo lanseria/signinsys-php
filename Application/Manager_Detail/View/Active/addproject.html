@@ -1,0 +1,141 @@
+				<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="{:U('Manager_Detail/Index/index')}">Admin</a>
+							</li>
+
+							<li>
+								<a href="{:U('Manager_Detail/Active/index')}">Activities</a>
+							</li>
+							<li class="active">Add Activities</li>
+						</ul><!-- .breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="icon-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- #nav-search -->
+					</div>
+
+					<div class="page-content">
+						<div class="page-header">
+							<h1>Activities &amp; Add Editor </h1>
+						</div><!-- /.page-header -->
+						<form class="form" method="post" enctype="multipart/form-data">
+							<div class="row" id="f1">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="form-group col-sm-12">
+									<h4 class="header green clearfix">
+										Activity Name:<input type="text" name="pname" placeholder="Activity Name" class="input-lg" />
+									</h4>
+									<input type="hidden" name="pdes" id="hidcon" value="" />
+									<div class="wysiwyg-editor" id="editor1"></div>
+								</div>								
+								<div class="hr hr-24"></div>
+								<div class="form-group col-sm-12" id="f2">
+									<label class="form-label">请选择需要的项</label><span class="label label-info arrowed-in-right arrowed">姓名已选</span>
+									<div class="space-2"></div>
+									<select multiple="" class="width-50 chosen-select tag-input-style" id="form-field-select-4" data-placeholder="Choose">
+									</select>
+									<hr />
+									<label for="id-date-picker-1">To When?</label>
+									<div class="row">
+										<div class="col-xs-8 col-sm-11">
+											<div class="input-group">
+												<input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="yyyy-mm-dd" name="penddate" />
+												<span class="input-group-addon">
+													<i class="icon-calendar bigger-110"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="hr hr-24"></div>
+								<div class="row form-group col-sm-12">
+									<div class="col-sm-4">
+										<div class="widget-box">
+											<div class="widget-header">
+												<h4>description1</h4>
+												<span class="widget-toolbar">
+													<a href="#" data-action="collapse">
+														<i class="icon-chevron-up"></i>
+													</a>
+													<a href="#" data-action="close">
+														<i class="icon-remove"></i>
+													</a>
+												</span>
+											</div>
+											<div class="widget-body">
+												<div class="widget-main">
+													<input type="text" id="form-field-1" placeholder="主题1" class="col-xs-12" style="border: 1px dashed #aaa;" name="title1">
+													<textarea class="form-control" rows="6" name="pdes1" placeholder="描述主题内容" style="border-radius: 0;resize:none;background-attachment:fixed;
+													background-repeat:no-repeat; border: 1px dashed #aaa"></textarea>
+													<input type="file" id="id-input-file-1" name="photo[]" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="widget-box">
+											<div class="widget-header">
+												<h4>description2</h4>
+												<span class="widget-toolbar">
+													<a href="#" data-action="collapse">
+														<i class="icon-chevron-up"></i>
+													</a>
+													<a href="#" data-action="close">
+														<i class="icon-remove"></i>
+													</a>
+												</span>
+											</div>
+											<div class="widget-body">
+												<div class="widget-main">
+													<input type="text" id="form-field-1" placeholder="主题2" class="col-xs-12" style="border: 1px dashed #aaa;" name="title2">
+													<textarea class="form-control" rows="6" name="pdes2" placeholder="描述主题内容" style="border-radius: 0;resize:none;background-attachment:fixed;
+													background-repeat:no-repeat; border: 1px dashed #aaa"></textarea>
+													<input type="file" id="id-input-file-2" name="photo[]" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="widget-box">
+											<div class="widget-header">
+												<h4>description3</h4>
+												<span class="widget-toolbar">
+													<a href="#" data-action="collapse">
+														<i class="icon-chevron-up"></i>
+													</a>
+													<a href="#" data-action="close">
+														<i class="icon-remove"></i>
+													</a>
+												</span>
+											</div>
+											<div class="widget-body">
+												<div class="widget-main">
+													<input type="text" id="form-field-1" placeholder="主题3" class="col-xs-12" style="border: 1px dashed #aaa;" name="title3">
+													<textarea class="form-control" rows="6" name="pdes3" placeholder="描述主题内容" style="border-radius: 0;resize:none;background-attachment:fixed;
+													background-repeat:no-repeat; border: 1px dashed #aaa"></textarea>
+													<input type="file" id="id-input-file-3" name="photo[]" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<script type="text/javascript">
+									var $path_assets = "__PUBLIC__/assets";//this will be used in loading jQuery UI if needed!
+								</script>
+								<button type="submit" class="btn btn-success">提交活动</button>
+							</div><!-- /.row -->
+						</form><!-- /.col -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->

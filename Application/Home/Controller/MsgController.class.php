@@ -5,13 +5,12 @@ use Think\Controller;
 
 class MsgController extends Controller
 {
-
     public function index()
     {
         // 1.创建对象
         $msgTable = D('project');
         // 2.获取url参数
-        $msg = $msgTable->searchProject();
+        $msg = $msgTable->searchProject_3();
         // 4.为视图赋值
         $this->assign('msglist', $msg);
         $this->display();
@@ -19,10 +18,10 @@ class MsgController extends Controller
 
     public function join()
     {
-        
         $msgTable = D('project');
         $msgid = I('get.pid');
         $msg = $msgTable->getMsgById($msgid);
+        $msgTable->updateRead($msgid);//add once read
         $this->assign('msg', $msg);
         $this->assign('pid',$msgid);
         $this->display();
@@ -43,6 +42,7 @@ class MsgController extends Controller
             $colloge = D('colloge')->where(array(
                 'school_id' => 1
             ))->select();
+            $msgTable->updateRead($msgid);//add once read
             $this->assign('province', $colloge);
             $this->assign('msgid',$msgid);
             $this->assign('msg', $msg);

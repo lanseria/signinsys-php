@@ -9,9 +9,11 @@
 	<meta name="author" content="">
 	<link rel="icon" href="__PUBLIC__/favicon.ico">
 	<title>后台--管理员中心</title>
-	<link href="__PUBLIC__/asset/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="__PUBLIC__/css/font-awesome.min.css" />
+	<link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
 	<link href="__PUBLIC__/css/dashboard.css" rel="stylesheet">
 	<link href="__PUBLIC__/css/patch.css" rel="stylesheet">
+
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -32,6 +34,7 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="{:U('Home/Msg/index')}">前台</a></li>
+					<li><a href="{:U('Manager_Detail/Index/index')}"> Dashboard Admin Beta 1.0</a></li>
 					<present name="Think.session.logineduser">
 						<li><a>欢迎您,{$Think.session.logineduser}!</a></li>
 						<li><a href="{:U('Manager/User/logout')}">退出</a></li>
@@ -62,7 +65,7 @@
 		</div>
 	</div>
 	<script src="__PUBLIC__/js/jquery-1.11.1.min.js"></script>
-	<script src="__PUBLIC__/asset/js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	var rowCount = 1;  //行数默认1行
 	var content = new Array("性别","年龄","学院班级信息","学号","个人简历","电话")

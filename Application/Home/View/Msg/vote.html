@@ -1,7 +1,7 @@
 <div class="bs-docs-featurette">
 	<div class="container">
 		<h2 class="bs-docs-featurette-title">{$msg.pname}</h2>
-		<p class="lead">{$msg.pdes}</p>
+		<p class="lead">{$msg.pdes|htmlspecialchars_decode}</p>
 		<div class="col-md-6 col-md-offset-3">
 			<form class="form-horizontal" action="{:U('/Home/Msg/vote')}" method="post">
 				<input type="hidden" name="pid" value="{$msgid}" />

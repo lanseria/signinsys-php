@@ -19,5 +19,7 @@ return array(
     'DB_MASTER_NUM'         =>  1, // 读写分离后 主服务器数量
     'DB_SLAVE_NO'           =>  '', // 指定从服务器序号
     
-    'SHOW_PAGE_TRACE' =>false,
+    'SHOW_PAGE_TRACE' => false,
+
+    'URL_MODEL'             =>  2,       // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
 );

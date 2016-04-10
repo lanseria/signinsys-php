@@ -1,7 +1,9 @@
 body {
   font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
 }
-
+div.col-sm-4 img{
+        width: 100%;
+}
 .bs-docs-section > p, .bs-docs-section > ul, 
 .bs-docs-section > ol, .bs-callout > p, 
 .bs-callout > ol, .bs-callout > ul {

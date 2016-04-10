@@ -43,10 +43,14 @@
 					<td>{$vo.mtel}</td>
 					<td>{$vo.mcreate_date}</td>
 					<td>{$vo.mdetail}</td>
-					<td><a href="del?mid={$vo.mid}">删除</a></td>
+					<td>
+						<a href="del?mid={$vo.mid}" class="btn btn-xs btn-danger">
+							<i class="icon-trash bigger-120"></i>
+						</a>
+					</td>
 				</tr>
 			</volist>
-			
+
 		</tbody>
 	</table>
 </div>
