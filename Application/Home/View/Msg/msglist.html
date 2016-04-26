@@ -5,7 +5,7 @@
 		<p class="lead">
 			<a href="https://github.com/Lanseria/mm" class="btn btn-outline-inverse btn-lg">下载 LDemo</a>
 		</p>
-		<p class="version">当前版本： v1.0.2 | 文档更新于：2016-03-18</p>
+		<p class="version">当前版本： v1.1.2 | 文档更新于：2016-03-18</p>
 	</div>
 </main>
 
@@ -18,7 +18,7 @@
 						<th>#</th>
 						<th class="text-center">项目名称</th>
 						<th class="text-center">细节</th>
-						<th class="text-center">创建时间</th>
+						<th class="text-center"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>截止时间</th>
 						<th class="text-center">报名人数</th>
 					</tr>
 				</thead>
@@ -26,14 +26,17 @@
 					<foreach name="msglist" item="msg" >
 						<tr>
 							<td>{$msg.pid}</td>
-							<td><a href="{:U('/Home/Msg/join')}?pid={$msg.pid}">{$msg.pname}</a></td>
-							<td>{$msg.pdes|htmlspecialchars_decode}</td>
-							<td>{$msg.pcreatetime}</td>
-							<td>{$msg.penroll}人</td>
-						</tr>
-					</foreach>
-				</tbody>
-			</table>
+							<td>
+								<if condition="$msg.pendtime gt $nowdate"><a style="color: red;" href="{:U('/Home/Msg/join')}?pid={$msg.pid}">{$msg.pname}</a><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+									<else /> <span style="color: #ccc;">{$msg.pname}</span>
+								</if></td>
+								<td>{$msg.pdes|htmlspecialchars_decode}</td>
+								<td><span>{$msg.pendtime}</span></td>
+								<td>{$msg.penroll}人</td>
+							</tr>
+						</foreach>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
-</div>

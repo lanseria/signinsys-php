@@ -54,9 +54,11 @@ class MsgController extends Controller
         $msgTable = D('project');
         $member = D('member');
         // 2.获取url参数
-        $msg = $msgTable->searchProject();
+        $msg = $msgTable->searchAllProject();
+        $nowdate = date('Y-m-d H:i:s');
         //$c_registered = $member->where('mprojectid='.$msg['pid'])->count();
         // 4.为视图赋值
+        $this->assign('nowdate', $nowdate);
         $this->assign('msglist', $msg);
         $this->display();
     }
