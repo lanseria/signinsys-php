@@ -58,11 +58,7 @@
 │   ├── images        静态图片目录
 │   ├── js            JS脚本目录
 │   └favicon.png      favicon
-│
-├── spider_imooc      爬虫文件目录
-│   └── data          已爬取的json文件目录
 ├── README.md
-├── gruntfile.js      grunt文件
 └── package.json
 ```
 
