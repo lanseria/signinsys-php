@@ -7,13 +7,13 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="icon-home home-icon"></i>
-								<a href="{:U('Manager_Detail/Index/index')}">Admin</a>
+								<a href="{:U('Manager_Detail/Index/index')}">后台</a>
 							</li>
 
 							<li>
-								<a href="{:U('Manager_Detail/Active/index')}">Activities</a>
+								<a href="{:U('Manager_Detail/Active/index')}">活动项</a>
 							</li>
-							<li class="active">Add Activities</li>
+							<li class="active">添加活动</li>
 						</ul><!-- .breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -28,14 +28,14 @@
 
 					<div class="page-content">
 						<div class="page-header">
-							<h1>Activities &amp; Add Editor </h1>
+							<h1>活动添加 </h1>
 						</div><!-- /.page-header -->
 						<form class="form" method="post" enctype="multipart/form-data">
 							<div class="row" id="f1">
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="form-group col-sm-12">
 									<h4 class="header green clearfix">
-										Activity Name:<input type="text" name="pname" placeholder="Activity Name" class="input-lg" />
+										活动名字叫什么:<input type="text" name="pname" placeholder="活动名" class="input-lg" />
 									</h4>
 									<input type="hidden" name="pdes" id="hidcon" value="" />
 									<div class="wysiwyg-editor" id="editor1"></div>
@@ -44,10 +44,10 @@
 								<div class="form-group col-sm-12" id="f2">
 									<label class="form-label">请选择需要的项</label><span class="label label-info arrowed-in-right arrowed">姓名已选</span>
 									<div class="space-2"></div>
-									<select multiple="" class="width-50 chosen-select tag-input-style" id="form-field-select-4" data-placeholder="Choose">
+									<select multiple="" class="width-50 chosen-select tag-input-style" id="form-field-select-4" data-placeholder="选择一项或多项">
 									</select>
 									<hr />
-									<label for="id-date-picker-1">To When?</label>
+									<label for="id-date-picker-1">到什么时候截止?</label>
 									<div class="row">
 										<div class="col-xs-8 col-sm-11">
 											<div class="input-group">
@@ -64,7 +64,7 @@
 									<div class="col-sm-4">
 										<div class="widget-box">
 											<div class="widget-header">
-												<h4>description1</h4>
+												<h4>描述之一</h4>
 												<span class="widget-toolbar">
 													<a href="#" data-action="collapse">
 														<i class="icon-chevron-up"></i>
@@ -87,7 +87,7 @@
 									<div class="col-sm-4">
 										<div class="widget-box">
 											<div class="widget-header">
-												<h4>description2</h4>
+												<h4>描述之二</h4>
 												<span class="widget-toolbar">
 													<a href="#" data-action="collapse">
 														<i class="icon-chevron-up"></i>
@@ -110,7 +110,7 @@
 									<div class="col-sm-4">
 										<div class="widget-box">
 											<div class="widget-header">
-												<h4>description3</h4>
+												<h4>描述之三</h4>
 												<span class="widget-toolbar">
 													<a href="#" data-action="collapse">
 														<i class="icon-chevron-up"></i>

@@ -34,7 +34,7 @@ class MsgController extends Controller
             $member = D('member');
             $r = $member->insertM($post['pid'],$post['name'],$post['gender'],$post['age'],$post['province'],$post['city'],$post['number'],$post['detail'],$post['tel']);
             if($r) $this->success('报名成功','/Home/Msg/msglist');
-            else $this->error($member->getError(),"javascript:history.back(-1);",1);
+            else $this->error($member->getError(),"javascript:window.location.href=document.referrer;",1);
         } else {
             $msgTable = D('project');
             $msgid = I('get.pid');

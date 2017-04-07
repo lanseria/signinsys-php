@@ -17,6 +17,7 @@
 	<link href="data:text/css;charset=utf-8," data-href="__PUBLIC__/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
 	<link href="__PUBLIC__/css/docs.min.css" rel="stylesheet">
 	<link href="__PUBLIC__/css/patch.css" rel="stylesheet">
+	<link rel="stylesheet" href="__PUBLIC__/assets/css/font-awesome.min.css" />
 	<link rel="apple-touch-icon" href="__PUBLIC__/icon.png">
 	<link rel="icon" href="__PUBLIC__/favicon.ico">
 	<!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -25,13 +26,55 @@
 	<script src="__PUBLIC__/js/ie-emulation-modes-warning.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/js/area.js"></script>
 	<script>var ajaxurl="{:U('/Home/Ajax/getArea')}";</script>
+	<script src="__PUBLIC__/assets/js/jquery.maskedinput.min.js"></script>
+	<script type="text/javascript">
+		jQuery(function($) {
+			$('.input-mask-phone').mask('999-9999-9999');
+			$('#formToConfirm').click(function(){
+				if($('#iName').val()==""){
+					alert('请填写姓名');
+					return false;
+				}
+				else{
+					if($('#iAge').val()==""){
+						alert('请填写年龄');
+						return false;
+					}
+					else{
+						if($('#iNumber').val()==""){
+							alert('请填写学号');
+							return false;
+						}
+						else{
+							if($('#iTel').val()==""){
+								alert('请填写手机号');
+								return false;
+							}
+							else{
+								if($('#idetail').val()==""){
+									alert('请填写个人简介');
+									return false;
+								}
+								else{
+									if($('#city').val()=='-1' || $('#province').val() == '-1'){
+										alert('请选择学院班级');
+										return false;
+									}
+								}
+							}
+						}
+					}
+				}
+			})
+		})
+	</script>
 </head>
 <body>
 	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
 		<div class="container">
 			<div class="navbar-header">
 				<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
+					<span class="sr-only">显示导航栏</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -54,7 +97,6 @@
 						</div>
 						<button type="submit" class="btn btn-default">Search</button>
 					</form>
-					<li><a href="{:U('Manager/Index/index')}" target="_blank">后台</a></li>
 				</ul>
 				<div class="nav navbar-nav navbar-right">
 					<a class="navbar-brand" style="padding: 6px 15px;" href="http://www.limonplayer.cn/" target="_blank"><img alt="Brand" src="__PUBLIC__/apple-touch-icon.png" style="width: 40px;display: inline-block; margin-right: 10px;">LimonPlayer</a>
@@ -67,13 +109,15 @@
 		<div class="container">
 			<p>Designed and built with all the love in the world by <a href="https://twitter.com/Lanseria01" target="_blank">@Lanseria01</a>.</p>
 			<ul class="bs-docs-footer-links text-muted">
-				<li>当前版本： v1.1.2</li>
+				<li>当前版本： v2.0.0</li>
 				<li>·</li>
 				<li><a href="https://github.com/Lanseria">GitHub 仓库</a></li>
 				<li>·</li>
 				<li><a href="http://limonplayer.cn">实例精选</a></li>
 				<li>·</li>
 				<li><a href="http://blog.limonplayer.cn/">官方博客</a></li>
+				<li>·</li>
+				<li><a href="/Manager_Detail/Index/index.html">进入后台</a></li>
 			</ul>
 		</div>
 	</footer>

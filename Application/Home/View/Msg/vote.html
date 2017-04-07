@@ -66,8 +66,11 @@
 				<if condition="$msg.istel eq 1 ">
 					<div class="form-group">
 						<label class="col-sm-3 control-label">手机号</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" id="iTel" placeholder="Tel" name="tel">
+						<div class="col-sm-9 input-group">
+							<span class="input-group-addon">
+								<i class="icon-phone"></i>
+							</span>
+							<input class="form-control input-mask-phone" id="iTel" type="text" id="form-field-mask-2" name="tel" />
 						</div>
 					</div>
 					<else />
@@ -76,13 +79,13 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">个人说明</label>
 						<div class="col-sm-9">
-							<textarea class="form-control" rows="3" name="detail"></textarea>
+							<textarea class="form-control" rows="3" name="detail" id="idetail"></textarea>
 						</div>
 					</div>
 					<else />
 				</if>
 				<div class="form-group">
-					<button type="submit" class="btn btn-success btn-lg">&nbsp;&nbsp;&nbsp;&nbsp;报名&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					<button type="submit" class="btn btn-success btn-lg" id="formToConfirm">&nbsp;&nbsp;&nbsp;&nbsp;报名&nbsp;&nbsp;&nbsp;&nbsp;</button>
 				</div>
 			</form>
 		</div>

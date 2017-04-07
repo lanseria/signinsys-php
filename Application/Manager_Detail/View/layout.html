@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<meta name="description" content="真后台">
 	<meta name="author" content="Lanseria">
 	<link rel="icon" href="__PUBLIC__/favicon.ico">
@@ -57,7 +56,7 @@
 				<a href="{:U('Manager_Detail/Index/index')}" class="navbar-brand">
 					<small>
 						<i class="icon-leaf"></i>
-						Dashboard Admin Beta 1.0
+						报名平台系统后台
 					</small>
 				</a><!-- /.brand -->
 			</div><!-- /.navbar-header -->
@@ -68,27 +67,21 @@
 						<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 							<img class="nav-user-photo" src="__PUBLIC__/assets/avatars/user.jpg" alt="Jason's Photo" />
 							<span class="user-info">
-								<small>Welcome,</small>
+								<small>欢迎,</small>
 								{$Think.session.logineduser}
 							</span>
 							<i class="icon-caret-down"></i>
 						</a>
 						<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 							<li>
-								<a href="{:U('Home/Msg/index')}">
+								<a href="{:U('/Home/Msg/index')}">
 									<i class="icon-bullhorn"></i>
 									前台
 								</a>
 							</li>
-							<li>
-								<a href="{:U('Manager/Index/index')}">
-									<i class="icon-cogs"></i>
-									后台-Release
-								</a>
-							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="{:U('Manager/User/logout')}">
+								<a href="{:U('/Manager_Detail/User/logout')}">
 									<i class="icon-off"></i>
 									注销
 								</a>
@@ -124,20 +117,20 @@
 					<li class="{$sac}">
 						<a href="{:U('Manager_Detail/Member/submember')}" class="dropdown-toggle">
 							<i class="icon-list"></i>
-							<span class="menu-text"> Members </span>
+							<span class="menu-text"> 修改成员信息 </span>
 							<b class="arrow icon-angle-down"></b>
 						</a>
 						<ul class="submenu">
 							<li class="{$sac1}">
 								<a href="{:U('Manager_Detail/Member/submember')}">
 									<i class="icon-double-angle-right"></i>
-									Sub Members 
+									查看活动人员
 								</a>
 							</li>
 							<li class="{$sac2}">
 								<a href="{:U('Manager_Detail/Member/editmember')}">
 									<i class="icon-double-angle-right"></i>
-									Edit Members 
+									编辑活动人员
 								</a>
 							</li>
 						</ul>
@@ -146,37 +139,28 @@
 					<li class="{$aac}">
 						<a href="#" class="dropdown-toggle">
 							<i class="icon-edit"></i>
-							<span class="menu-text"> Activities </span>
+							<span class="menu-text"> 活动项 </span>
 
 							<b class="arrow icon-angle-down"></b>
 						</a>
 
 						<ul class="submenu">
-							<li class="{$aac1}">
-								<a href="{:U('Manager_Detail/Active/addproject')}">
-									<i class="icon-double-angle-right"></i>
-									Add Activities 
-								</a>
-							</li>
-
-							<li class="{$aac2}">
-								<a href="{:U('Manager_Detail/Active/delproject')}">
-									<i class="icon-double-angle-right"></i>
-									Del Activities 
-								</a>
-							</li>
-
-							<li class="{$aac3}">
-								<a href="{:U('Manager_Detail/Active/editproject')}">
-									<i class="icon-double-angle-right"></i>
-									Edit Activities
-								</a>
-							</li>
-
 							<li class="{$aac4}">
 								<a href="{:U('Manager_Detail/Active/sumproject')}">
 									<i class="icon-double-angle-right"></i>
-									Summary Activities
+									查看活动
+								</a>
+							</li>
+							<li class="{$aac1}">
+								<a href="{:U('Manager_Detail/Active/addproject')}">
+									<i class="icon-double-angle-right"></i>
+									添加活动
+								</a>
+							</li>
+							<li class="{$aac2}">
+								<a href="{:U('Manager_Detail/Active/editproject')}">
+									<i class="icon-double-angle-right"></i>
+									编辑活动
 								</a>
 							</li>
 						</ul>
@@ -352,6 +336,7 @@
 		$("#ptitle").html(strhtml);
 		$(".ptitle").html("<i class='icon-double-angle-right'></i>");
 		$(".ptitle").append(" "+strhtml);
+		$('#downbtn').attr('href','/Manager_Detail/Member/download.html?pid='+strvalue+'&type=Excel5');
 		$.ajax({
 			url: "/Manager_Detail/Ajax/index.html?sid="+strvalue,
 			type: "get",
@@ -386,12 +371,28 @@
 				$("tbody").append(html_inter);
 			}
 		});
-
+	}
+	function P_Change(){
+		var strvalue = $("#form-field-select-1").val();
+		var strhtml = $("#form-field-select-1 option:selected").text();
+		$("#pname").val(strhtml);
+		$.ajax({
+			url: "/Manager_Detail/Ajax/projectid.html?sid="+strvalue,
+			type: "get",
+			dataType: "json",
+			success: function (data) {
+				$('#editor1').html(data[0]['pdes']);
+				$('#id-date-picker-1').val(data[0]['pendtime']);
+				$('#pdes1').html(data[0]['pdescribe1']);
+				$('#pdes2').html(data[0]['pdescribe2']);
+				$('#pdes3').html(data[0]['pdescribe3']);
+			}
+		});
 	}
 </script>
 <script type="text/javascript">
 	var grid_data = 
-[{"mid":"9","mname":"赵端阳","msex":"女","mage":"17","colloge_name":"计算机与通信工程学院","class_name":"计算机科学与技术专业（嵌入式软件）","mnumber":"541513430254","mcreate_date":"2016-03-24 23:28:21","mdetail":"","mtel":"13283830343","mprojectid":"1","pname":"技术部方向确认"},{"mid":"10","mname":"关钦立","msex":"男","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"计算机科学与技术专业（嵌入式软件）","mnumber":"541513430208","mcreate_date":"2016-03-24 23:30:46","mdetail":"JAVA","mtel":"13523064817","mprojectid":"1","pname":"技术部方向确认"},{"mid":"14","mname":"刘杨","msex":"女","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"计算机科学与技术专业（3G软件）","mnumber":"541513140124","mcreate_date":"2016-03-24 23:35:34","mdetail":"","mtel":"15839480611","mprojectid":"1","pname":"技术部方向确认"},{"mid":"17","mname":"曾慧慧","msex":"女","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"计算机科学与技术专业","mnumber":"541407010102","mcreate_date":"2016-03-24 23:40:45","mdetail":"","mtel":"15837130212","mprojectid":"1","pname":"技术部方向确认"},{"mid":"18","mname":"刘天成","msex":"男","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"电子信息工程","mnumber":"541523030126","mcreate_date":"2016-03-24 23:49:02","mdetail":"JAVA","mtel":"18203615055","mprojectid":"1","pname":"技术部方向确认"},{"mid":"19","mname":"赖美玲","msex":"女","mage":"21","colloge_name":"政法学院","class_name":"社会工作专业","mnumber":"541509020111","mcreate_date":"2016-03-24 23:54:20","mdetail":"PHP","mtel":"15824856050","mprojectid":"1","pname":"技术部方向确认"},{"mid":"20","mname":"吕银鹏","msex":"男","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"电子信息科学与技术专业","mnumber":"541407020123","mcreate_date":"2016-03-24 23:59:30","mdetail":"","mtel":"18237161524","mprojectid":"1","pname":"技术部方向确认"},{"mid":"21","mname":"吕银鹏","msex":"男","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"电子信息科学与技术专业","mnumber":"541407020123","mcreate_date":"2016-03-25 00:00:34","mdetail":"PHP","mtel":"18237161524","mprojectid":"1","pname":"技术部方向确认"},{"mid":"24","mname":"范宝","msex":"男","mage":"21","colloge_name":"计算机与通信工程学院","class_name":"网络工程专业（运维与安全）","mnumber":"541507110107","mcreate_date":"2016-03-25 00:11:03","mdetail":"","mtel":"15993167001","mprojectid":"1","pname":"技术部方向确认"},{"mid":"25","mname":"吕硕","msex":"男","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"物联网工程专业","mnumber":"541507090122","mcreate_date":"2016-03-25 07:05:23","mdetail":"对技术的热爱是炽热的，喜欢技术性的问题和技术层面的知识。计算机，网络，网站都非常感兴趣 ！","mtel":"18538508603","mprojectid":"1","pname":"技术部方向确认"},{"mid":"26","mname":"丁麒轩","msex":"男","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"信息工程专业","mnumber":"541507070105","mcreate_date":"2016-03-25 07:25:09","mdetail":"C#","mtel":"17607360276","mprojectid":"1","pname":"技术部方向确认"},{"mid":"27","mname":"吕鹏","msex":"男","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"信息工程专业","mnumber":"541507070127","mcreate_date":"2016-03-25 07:49:56","mdetail":"JAVA","mtel":"18838209893","mprojectid":"1","pname":"技术部方向确认"},{"mid":"28","mname":"谢为","msex":"男","mage":"18","colloge_name":"计算机与通信工程学院","class_name":"软件工程专业","mnumber":"541507120146","mcreate_date":"2016-03-25 08:50:55","mdetail":"java","mtel":"13575231170","mprojectid":"1","pname":"技术部方向确认"},{"mid":"29","mname":"甘小彬","msex":"男","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"软件工程专业","mnumber":"541507120109","mcreate_date":"2016-03-25 08:53:12","mdetail":"java","mtel":"18716805329","mprojectid":"1","pname":"技术部方向确认"},{"mid":"30","mname":"孙晨宇","msex":"男","mage":"18","colloge_name":"计算机与通信工程学院","class_name":"计算机科学与技术专业","mnumber":"37","mcreate_date":"2016-03-25 09:20:11","mdetail":"学习技术，勇闯未来","mtel":"18510358558","mprojectid":"1","pname":"技术部方向确认"},{"mid":"32","mname":"石金浩","msex":"男","mage":"19","colloge_name":"软件学院","class_name":"软件工程专业（移动互联网方向）","mnumber":"541513250227","mcreate_date":"2016-03-25 09:24:57","mdetail":"我是一个活泼胆大，勇于创新的男生。我的专业方向是java","mtel":"13213599526","mprojectid":"1","pname":"技术部方向确认"},{"mid":"33","mname":"张木森","msex":"男","mage":"21","colloge_name":"计算机与通信工程学院","class_name":"电子信息工程","mnumber":"541523030150","mcreate_date":"2016-03-25 10:30:27","mdetail":"喜欢编程","mtel":"13276903349","mprojectid":"1","pname":"技术部方向确认"},{"mid":"34","mname":"杨金朋","msex":"男","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"软件工程专业","mnumber":"541510020142","mcreate_date":"2016-03-25 10:37:59","mdetail":"我想报 C#","mtel":"15713862215","mprojectid":"1","pname":"技术部方向确认"},{"mid":"36","mname":"黄祥","msex":"男","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"电子信息工程","mnumber":"541523030216","mcreate_date":"2016-03-25 10:54:15","mdetail":"","mtel":"18736010173","mprojectid":"1","pname":"技术部方向确认"},{"mid":"43","mname":"郑凯","msex":"男","mage":"21","colloge_name":"计算机与通信工程学院","class_name":"软件工程专业","mnumber":"541407120158","mcreate_date":"2016-03-25 11:16:51","mdetail":"java","mtel":"18838964407","mprojectid":"1","pname":"技术部方向确认"},{"mid":"44","mname":"张云飞","msex":"男","mage":"21","colloge_name":"计算机与通信工程学院","class_name":"软件工程专业","mnumber":"541507120158","mcreate_date":"2016-03-25 11:21:10","mdetail":"","mtel":"15824855868","mprojectid":"1","pname":"技术部方向确认"}] ;	
+	[{"mid":"9","mname":"赵端阳","msex":"女","mage":"17","colloge_name":"计算机与通信工程学院","class_name":"计算机科学与技术专业（嵌入式软件）","mnumber":"541513430254","mcreate_date":"2016-03-24 23:28:21","mdetail":"","mtel":"13283830343","mprojectid":"1","pname":"技术部方向确认"},{"mid":"10","mname":"关钦立","msex":"男","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"计算机科学与技术专业（嵌入式软件）","mnumber":"541513430208","mcreate_date":"2016-03-24 23:30:46","mdetail":"JAVA","mtel":"13523064817","mprojectid":"1","pname":"技术部方向确认"},{"mid":"14","mname":"刘杨","msex":"女","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"计算机科学与技术专业（3G软件）","mnumber":"541513140124","mcreate_date":"2016-03-24 23:35:34","mdetail":"","mtel":"15839480611","mprojectid":"1","pname":"技术部方向确认"},{"mid":"17","mname":"曾慧慧","msex":"女","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"计算机科学与技术专业","mnumber":"541407010102","mcreate_date":"2016-03-24 23:40:45","mdetail":"","mtel":"15837130212","mprojectid":"1","pname":"技术部方向确认"},{"mid":"18","mname":"刘天成","msex":"男","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"电子信息工程","mnumber":"541523030126","mcreate_date":"2016-03-24 23:49:02","mdetail":"JAVA","mtel":"18203615055","mprojectid":"1","pname":"技术部方向确认"},{"mid":"19","mname":"赖美玲","msex":"女","mage":"21","colloge_name":"政法学院","class_name":"社会工作专业","mnumber":"541509020111","mcreate_date":"2016-03-24 23:54:20","mdetail":"PHP","mtel":"15824856050","mprojectid":"1","pname":"技术部方向确认"},{"mid":"20","mname":"吕银鹏","msex":"男","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"电子信息科学与技术专业","mnumber":"541407020123","mcreate_date":"2016-03-24 23:59:30","mdetail":"","mtel":"18237161524","mprojectid":"1","pname":"技术部方向确认"},{"mid":"21","mname":"吕银鹏","msex":"男","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"电子信息科学与技术专业","mnumber":"541407020123","mcreate_date":"2016-03-25 00:00:34","mdetail":"PHP","mtel":"18237161524","mprojectid":"1","pname":"技术部方向确认"},{"mid":"24","mname":"范宝","msex":"男","mage":"21","colloge_name":"计算机与通信工程学院","class_name":"网络工程专业（运维与安全）","mnumber":"541507110107","mcreate_date":"2016-03-25 00:11:03","mdetail":"","mtel":"15993167001","mprojectid":"1","pname":"技术部方向确认"},{"mid":"25","mname":"吕硕","msex":"男","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"物联网工程专业","mnumber":"541507090122","mcreate_date":"2016-03-25 07:05:23","mdetail":"对技术的热爱是炽热的，喜欢技术性的问题和技术层面的知识。计算机，网络，网站都非常感兴趣 ！","mtel":"18538508603","mprojectid":"1","pname":"技术部方向确认"},{"mid":"26","mname":"丁麒轩","msex":"男","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"信息工程专业","mnumber":"541507070105","mcreate_date":"2016-03-25 07:25:09","mdetail":"C#","mtel":"17607360276","mprojectid":"1","pname":"技术部方向确认"},{"mid":"27","mname":"吕鹏","msex":"男","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"信息工程专业","mnumber":"541507070127","mcreate_date":"2016-03-25 07:49:56","mdetail":"JAVA","mtel":"18838209893","mprojectid":"1","pname":"技术部方向确认"},{"mid":"28","mname":"谢为","msex":"男","mage":"18","colloge_name":"计算机与通信工程学院","class_name":"软件工程专业","mnumber":"541507120146","mcreate_date":"2016-03-25 08:50:55","mdetail":"java","mtel":"13575231170","mprojectid":"1","pname":"技术部方向确认"},{"mid":"29","mname":"甘小彬","msex":"男","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"软件工程专业","mnumber":"541507120109","mcreate_date":"2016-03-25 08:53:12","mdetail":"java","mtel":"18716805329","mprojectid":"1","pname":"技术部方向确认"},{"mid":"30","mname":"孙晨宇","msex":"男","mage":"18","colloge_name":"计算机与通信工程学院","class_name":"计算机科学与技术专业","mnumber":"37","mcreate_date":"2016-03-25 09:20:11","mdetail":"学习技术，勇闯未来","mtel":"18510358558","mprojectid":"1","pname":"技术部方向确认"},{"mid":"32","mname":"石金浩","msex":"男","mage":"19","colloge_name":"软件学院","class_name":"软件工程专业（移动互联网方向）","mnumber":"541513250227","mcreate_date":"2016-03-25 09:24:57","mdetail":"我是一个活泼胆大，勇于创新的男生。我的专业方向是java","mtel":"13213599526","mprojectid":"1","pname":"技术部方向确认"},{"mid":"33","mname":"张木森","msex":"男","mage":"21","colloge_name":"计算机与通信工程学院","class_name":"电子信息工程","mnumber":"541523030150","mcreate_date":"2016-03-25 10:30:27","mdetail":"喜欢编程","mtel":"13276903349","mprojectid":"1","pname":"技术部方向确认"},{"mid":"34","mname":"杨金朋","msex":"男","mage":"20","colloge_name":"计算机与通信工程学院","class_name":"软件工程专业","mnumber":"541510020142","mcreate_date":"2016-03-25 10:37:59","mdetail":"我想报 C#","mtel":"15713862215","mprojectid":"1","pname":"技术部方向确认"},{"mid":"36","mname":"黄祥","msex":"男","mage":"19","colloge_name":"计算机与通信工程学院","class_name":"电子信息工程","mnumber":"541523030216","mcreate_date":"2016-03-25 10:54:15","mdetail":"","mtel":"18736010173","mprojectid":"1","pname":"技术部方向确认"},{"mid":"43","mname":"郑凯","msex":"男","mage":"21","colloge_name":"计算机与通信工程学院","class_name":"软件工程专业","mnumber":"541407120158","mcreate_date":"2016-03-25 11:16:51","mdetail":"java","mtel":"18838964407","mprojectid":"1","pname":"技术部方向确认"},{"mid":"44","mname":"张云飞","msex":"男","mage":"21","colloge_name":"计算机与通信工程学院","class_name":"软件工程专业","mnumber":"541507120158","mcreate_date":"2016-03-25 11:21:10","mdetail":"","mtel":"15824855868","mprojectid":"1","pname":"技术部方向确认"}] ;	
 	
 	jQuery(function($) {
 
@@ -419,21 +420,21 @@
 			formatoptions:{ 
 				keys:true,
 				delOptions:{recreateForm: true, beforeShowForm:beforeDeleteCallback},
-					}
-				},
-				{name:'mid',index:'mid', width:60, sorttype:"int", editable: true},
-				{name:'mcreate_date',index:'mcreate_date',width:90, editable:true, sorttype:"date",unformat: pickDate},
-				{name:'mname',index:'mname', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
-				{name:'mgender',index:'mgender', width:70, editable: true,edittype:"checkbox",editoptions: {value:"Man:Woman"},unformat: aceSwitch},
-				{name:'colloge_name',index:'colloge_name', width:90, editable: true,edittype:"select",editoptions:{value:"FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}},
-				{name:'mdetail',index:'mdetail', width:150, sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}} 
-				], 
+			}
+		},
+		{name:'mid',index:'mid', width:60, sorttype:"int", editable: true},
+		{name:'mcreate_date',index:'mcreate_date',width:90, editable:true, sorttype:"date",unformat: pickDate},
+		{name:'mname',index:'mname', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
+		{name:'mgender',index:'mgender', width:70, editable: true,edittype:"checkbox",editoptions: {value:"Man:Woman"},unformat: aceSwitch},
+		{name:'colloge_name',index:'colloge_name', width:90, editable: true,edittype:"select",editoptions:{value:"FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}},
+		{name:'mdetail',index:'mdetail', width:150, sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}} 
+		], 
 
-				viewrecords : true,
-				rowNum:10,
-				rowList:[10,20,30],
-				pager : pager_selector,
-				altRows: true,
+		viewrecords : true,
+		rowNum:10,
+		rowList:[10,20,30],
+		pager : pager_selector,
+		altRows: true,
 			//toppager: true,
 			
 			multiselect: true,
@@ -712,65 +713,6 @@
 				return false;
 			});
 		</volist>
-		$('#gritter-sticky').on(ace.click_event, function(){
-			var unique_id = $.gritter.add({
-				title: 'This is a sticky notice!',
-				text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" class="red">magnis dis parturient</a> montes, nascetur ridiculus mus.',
-				image: $path_assets+'/avatars/avatar.png',
-				sticky: true,
-				time: '',
-				class_name: 'gritter-info' + ' gritter-light'
-			});
-
-			return false;
-		});
-		$('#gritter-without-image').on(ace.click_event, function(){
-			$.gritter.add({
-				// (string | mandatory) the heading of the notification
-				title: 'This is a notice without an image!',
-				// (string | mandatory) the text inside the notification
-				text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" class="orange">magnis dis parturient</a> montes, nascetur ridiculus mus.',
-				class_name: 'gritter-success' +  ' gritter-light'
-			});
-
-			return false;
-		});
-		$('#gritter-max3').on(ace.click_event, function(){
-			$.gritter.add({
-				title: 'This is a notice with a max of 3 on screen at one time!',
-				text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" class="green">magnis dis parturient</a> montes, nascetur ridiculus mus.',
-				image: $path_assets+'/avatars/avatar3.png',
-				sticky: false,
-				before_open: function(){
-					if($('.gritter-item-wrapper').length >= 3)
-					{
-						return false;
-					}
-				},
-				class_name: 'gritter-warning' +  ' gritter-light' 
-			});
-			return false;
-		});
-		$('#gritter-center').on(ace.click_event, function(){
-			$.gritter.add({
-				title: 'This is a centered notification',
-				text: 'Just add a "gritter-center" class_name to your $.gritter.add or globally to $.gritter.options.class_name',
-				class_name: 'gritter-info gritter-center' + ' gritter-light' 
-			});
-			return false;
-		});
-		$('#gritter-error').on(ace.click_event, function(){
-			$.gritter.add({
-				title: 'This is a warning notification',
-				text: 'Just add a "gritter-light" class_name to your $.gritter.add or globally to $.gritter.options.class_name',
-				class_name: 'gritter-error' +  ' gritter-light' 
-			});
-			return false;
-		});
-		$("#gritter-remove").on(ace.click_event, function(){
-			$.gritter.removeAll();
-			return false;
-		});
 	});
 </script>
 <!-- inline scripts related to this page -->

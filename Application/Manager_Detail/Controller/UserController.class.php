@@ -1,5 +1,5 @@
 <?php
-namespace Manager\Controller;
+namespace Manager_Detail\Controller;
 use Think\Controller;
 class UserController extends Controller {
     public function login(){
