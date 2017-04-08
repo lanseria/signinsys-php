@@ -26,6 +26,39 @@ class MemberController extends Controller {
             $this->error('只有管理员才可以进入,请先登录', '/Manager_Detail/User/login');
         }
     }
+    public function csvdown($id){
+        $memberlist = D('vmember')->where(array(
+                'mprojectid' => $id
+            ))->field('mname,mnumber')->select();
+        $str = "";
+        foreach ($memberlist as $key => $value) {
+            $str .= $value['mname'].",".$value['mnumber']."\n";
+        }
+        $fileName = 'es-'.date('Ymd').'.csv';
+        $this->export_csv($fileName,$str);
+        exit;
+    }
+    public function smscsvdown($id){
+        $memberlist = D('vmember')->where(array(
+                'mprojectid' => $id
+            ))->field('mname,mtel')->select();
+        $str = "";
+        foreach ($memberlist as $key => $value) {
+            $str .= $value['mname'].",".$value['mtel']."\n";
+        }
+        $fileName = 'sms-'.date('Ymd').'.csv';
+        $this->export_csv($fileName,$str);
+        exit;
+    }
+    public function export_csv($filename, $data){
+        header("Content-type:text/csv");   
+        header("Content-Disposition:attachment;filename=".$filename);   
+        header('Cache-Control:must-revalidate,post-check=0,pre-check=0');   
+        header('Expires:0');   
+        header('Pragma:public');
+        echo $data;
+        
+    }
     public function editmember(){
         if (session('?logineduser')){
             $this->assign('sac','open active');

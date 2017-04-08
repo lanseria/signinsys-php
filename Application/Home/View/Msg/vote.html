@@ -75,6 +75,15 @@
 					</div>
 					<else />
 				</if>
+				<if condition="$msg.isemail eq 1 ">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Email</label>
+						<div class="col-sm-9 input-group">
+							<input class="form-control" id="iEmail" type="text" name="email" />
+						</div>
+					</div>
+					<else />
+				</if>
 				<if condition="$msg.isdetail eq 1 ">
 					<div class="form-group">
 						<label class="col-sm-3 control-label">个人说明</label>

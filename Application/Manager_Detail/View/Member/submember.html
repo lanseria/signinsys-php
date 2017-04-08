@@ -159,134 +159,17 @@
 				<div class="hr hr-18 dotted hr-double"></div>
 
 				<h4 class="pink">
-					<i class="icon-hand-right icon-animated-hand-pointer blue"></i>
-					<a href="#modal-table" role="button" class="green" data-toggle="modal"> 表格预览 </a>
+					<a class="btn btn-sm btn-success pull-left" id="downbtn" href="/Manager_Detail/Member/csvdown.html?id={$msg[0].pid}">
+						<i class="icon-download"></i>
+						导出考试专用CSV文件
+					</a>
 				</h4>
-
-				<div class="hr hr-18 dotted hr-double"></div>
-
-				<div id="modal-table" class="modal fade" tabindex="-1">
-					<div class="modal-dialog" style="width: 1000px;">
-						<div class="modal-content">
-							<div class="modal-header no-padding">
-								<div class="table-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-										<span class="white">&times;</span>
-									</button>
-									预览结果 for "{$msg[0].pname}"
-								</div>
-							</div>
-
-							<div class="modal-body no-padding">
-								<table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
-									<thead>
-										<tr>
-											<th class="center">
-												<label>
-													<input type="checkbox" class="ace" />
-													<span class="lbl"></span>
-												</label>
-											</th>
-											<th>Name</th>
-											<th>Sex</th>
-											<th class="">Age</th>
-											<th>
-												<i class="icon-time bigger-110 hidden-360"></i>
-												Sign_in Time
-											</th>
-											<th class="hidden-480">S_Number</th>
-											<th class="hidden-480">Colloge</th>
-											<th class="hidden-480">Class</th>
-											<th class="hidden-480">Tel</th>
-											<th>CURD</th>
-										</tr>
-									</thead>
-
-									<tbody>
-										<volist name="memberlist" id="vo" empty="暂时没有数据">
-											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" class="ace" />
-														<span class="lbl">{$vo.mid}</span>
-													</label>
-												</td>
-												<td>
-													<a href="#" id="gritter-regular{$vo.mid}">{$vo.mname}</a>
-												</td>
-												<td>{$vo.msex}</td>
-												<td class="hidden-480">{$vo.mage}</td>
-												<td>{$vo.mcreate_date}</td>
-												<td>{$vo.mnumber}</td>
-												<td class="hidden-480">
-													<span class="label label-sm label-inverse arrowed-in">{$vo.colloge_name}</span>
-												</td>
-												<td class="hidden-480">
-													<span class="label label-sm label-success">{$vo.class_name}</span>
-												</td>
-												<td>{$vo.mtel}</td>
-												<td>
-													<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-														<button class="btn btn-xs btn-info">
-															<i class="icon-edit bigger-120"></i>
-														</button>
-														<a class="btn btn-xs btn-danger" href="del?mid={$vo.mid}">
-															<i class="icon-trash bigger-120"></i>
-														</a>
-													</div>
-
-													<div class="visible-xs visible-sm hidden-md hidden-lg">
-														<div class="inline position-relative">
-															<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
-																<i class="icon-cog icon-only bigger-110"></i>
-															</button>
-
-															<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-																<li>
-																	<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																		<span class="blue">
-																			<i class="icon-zoom-in bigger-120"></i>
-																		</span>
-																	</a>
-																</li>
-
-																<li>
-																	<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																		<span class="green">
-																			<i class="icon-edit bigger-120"></i>
-																		</span>
-																	</a>
-																</li>
-
-																<li>
-																	<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																		<span class="red">
-																			<i class="icon-trash bigger-120"></i>
-																		</span>
-																	</a>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</volist>
-									</tbody>
-								</table>
-							</div>
-
-							<div class="modal-footer no-margin-top">
-								<button class="btn btn-sm btn-danger pull-left" data-dismiss="modal">
-									<i class="icon-remove"></i>
-									Close
-								</button>
-								<a class="btn btn-sm btn-success pull-left" id="downbtn" href="/Manager_Detail/Member/download.html?pid={$msg[0].pid}&type=Excel5">
-									<i class="icon-download"></i>
-									导出Excel
-								</a>
-							</div>
-						</div><!-- /.modal-content -->
-					</div><!-- /.modal-dialog -->
+				<h4 class="pink">
+					<a class="btn btn-sm btn-success pull-left" id="smsdownbtn" href="/Manager_Detail/Member/smscsvdown.html?id={$msg[0].pid}">
+						<i class="icon-download"></i>
+						导出群发专用CSV文件
+					</a>
+				</h4>
 				</div><!-- PAGE CONTENT ENDS -->
 			</div><!-- /.col -->
 		</div><!-- /.row -->

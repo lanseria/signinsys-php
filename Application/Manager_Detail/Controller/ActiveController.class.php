@@ -36,6 +36,7 @@ class ActiveController extends Controller {
                 $isnumber = 0;
                 $isdetail = 0;
                 $istel = 0;
+                $isemail = 0;
                 if($post['name0']==0)
                     $isgender = 1;
                 if ($post['name1']==1)
@@ -48,10 +49,12 @@ class ActiveController extends Controller {
                     $isdetail = 1;
                 if ($post['name5']==5)
                     $istel = 1;
+                if ($post['name6']==6)
+                    $isemail = 1;
 
                 $project = D("project");
 
-                $data = $project->insertP($post['pname'],$pimg,$pdes,$ptitle1,$pdescribe1,$ptitle2,$pdescribe2,$ptitle3,$pdescribe3,$isgender,$isage,$iscollege,$isnumber,$isdetail,$istel,$penddate);
+                $data = $project->insertP($post['pname'],$pimg,$pdes,$ptitle1,$pdescribe1,$ptitle2,$pdescribe2,$ptitle3,$pdescribe3,$isgender,$isage,$iscollege,$isnumber,$isdetail,$istel,$isemail,$penddate);
                 if($data)
                 {
                     $this->success('申请成功');

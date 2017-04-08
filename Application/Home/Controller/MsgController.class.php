@@ -32,7 +32,7 @@ class MsgController extends Controller
         if (IS_POST) {
             $post = $_POST;
             $member = D('member');
-            $r = $member->insertM($post['pid'],$post['name'],$post['gender'],$post['age'],$post['province'],$post['city'],$post['number'],$post['detail'],$post['tel']);
+            $r = $member->insertM($post['pid'],$post['name'],$post['gender'],$post['age'],$post['province'],$post['city'],$post['number'],$post['detail'],$post['tel'],$post['email']);
             if($r) $this->success('报名成功','/Home/Msg/msglist');
             else $this->error($member->getError(),"javascript:window.location.href=document.referrer;",1);
         } else {

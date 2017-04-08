@@ -7,7 +7,7 @@ class ProjectModel extends Model{
     // 对象的数据表
     protected $trueTableName = 'm_project';
 
-    public function insertP($pname,$pimg,$pdes,$ptitle1,$pdescribe1,$ptitle2,$pdescribe2,$ptitle3,$pdescribe3,$isgender,$isage,$iscollege,$isnumber,$isdetail,$istel,$penddate)
+    public function insertP($pname,$pimg,$pdes,$ptitle1,$pdescribe1,$ptitle2,$pdescribe2,$ptitle3,$pdescribe3,$isgender,$isage,$iscollege,$isnumber,$isdetail,$istel,$isemail,$penddate)
     {
         $data['pname']=$pname;
         $data['ptitle1']=$ptitle1;
@@ -31,6 +31,7 @@ class ProjectModel extends Model{
         $data['isnumber']=$isnumber;
         $data['isdetail']=$isdetail;
         $data['istel']=$istel;
+        $data['isemail']=$isemail;
         $data['pcreatetime']=date('Y-m-d H:i:s');
         $data['pendtime']=$penddate;
         

@@ -312,8 +312,8 @@
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
 	var rowCount = 1;  //行数默认1行
-	var content = new Array("性别","年龄","学院班级信息","学号","个人简历","电话")
-	var Econtent = new Array("gender","age","college","number","detail","tel")
+	var content = new Array("性别","年龄","学院班级信息","学号","个人简历","电话","邮箱")
+	var Econtent = new Array("gender","age","college","number","detail","tel","email")
 	function addSRow(n){
 		var newSelect='<input type="hidden" class="form-control" id="name'+(n+1)+'" name="name'+(n+1)+'" value="'+Econtent[n-1]+'">';
 		$('#f2').append(newSelect);  
@@ -336,7 +336,8 @@
 		$("#ptitle").html(strhtml);
 		$(".ptitle").html("<i class='icon-double-angle-right'></i>");
 		$(".ptitle").append(" "+strhtml);
-		$('#downbtn').attr('href','/Manager_Detail/Member/download.html?pid='+strvalue+'&type=Excel5');
+		$('#downbtn').attr('href','/Manager_Detail/Member/csvdown.html?id='+strvalue);
+		$('#smsdownbtn').attr('href','/Manager_Detail/Member/smscsvdown.html?id='+strvalue);
 		$.ajax({
 			url: "/Manager_Detail/Ajax/index.html?sid="+strvalue,
 			type: "get",
