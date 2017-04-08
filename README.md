@@ -28,7 +28,10 @@
 项目主页如下如所示(点击可以查看)
 
 [![项目主页](https://raw.github.com/Lanseria/mm/master/docs/images/index.png)](http://mm.limonplayer.cn)
-[![项目部分截图](https://raw.github.com/Lanseria/mm/master/docs/images/index.png)](http://mm.limonplayer.cn)
+
+[![项目部分截图](https://raw.github.com/Lanseria/mm/master/docs/images/detail1.png)](http://mm.limonplayer.cn)
+
+[![项目部分截图](https://raw.github.com/Lanseria/mm/master/docs/images/detail2.png)](http://mm.limonplayer.cn)
 
 ### 详细功能
 
